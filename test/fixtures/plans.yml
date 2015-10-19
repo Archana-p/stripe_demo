@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stripe_plan_id: 1
+  name: MyString
+  amount: 1
+  currency: MyString
+  trial_period_of_days: MyString
+  integer: MyString
+  stripe_statement_descriptor: MyString
+
+two:
+  stripe_plan_id: 1
+  name: MyString
+  amount: 1
+  currency: MyString
+  trial_period_of_days: MyString
+  integer: MyString
+  stripe_statement_descriptor: MyString
