@@ -1,0 +1,23 @@
+<h2>Listing Plans </h2>
+<table border="1" cellpadding="1" cellspacing="0">
+	<tbody>
+  <tr>
+   <th>Plan Id</th> 
+   <th>Name</th>
+   <th>Amount</th>
+   <th>Trial period of days</th>
+   <th>Interval</th>
+   <th>Action</th>
+   </tr>
+   <tr align="center">
+    <% @plans.each do |plan| %>
+      <td><%= plan.stripe_plan_id %></td>
+      <td><%= plan.name %></td>
+      <td><%= plan.amount  %></td>
+      <td><%= plan.trial_period_of_days %></td>
+      <td><%= plan.interval %></td>
+      <td><%= link_to "Subscribe", new_subscription_path(:plan_id => plan.id) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

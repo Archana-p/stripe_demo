@@ -6,7 +6,7 @@ class CreatePlans < ActiveRecord::Migration
       t.integer :amount
       t.string :currency
       t.string :trial_period_of_days
-      t.string :integer
+      t.string :interval
       t.string :stripe_statement_descriptor
 
       t.timestamps null: false

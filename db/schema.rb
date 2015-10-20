@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151019114517) do
+ActiveRecord::Schema.define(version: 20151020102249) do
 
   create_table "models", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20151019114517) do
   add_index "models", ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true, using: :btree
 
   create_table "plans", force: :cascade do |t|
-    t.integer  "stripe_plan_id",              limit: 4
+    t.string   "stripe_plan_id",              limit: 255
     t.string   "name",                        limit: 255
     t.integer  "amount",                      limit: 4
     t.string   "currency",                    limit: 255
     t.string   "trial_period_of_days",        limit: 255
-    t.string   "integer",                     limit: 255
+    t.string   "interval",                    limit: 255
     t.string   "stripe_statement_descriptor", limit: 255
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
