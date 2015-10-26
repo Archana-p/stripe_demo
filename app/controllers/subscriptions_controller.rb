@@ -1,12 +1,12 @@
 class SubscriptionsController < ApplicationController
 
   def index
+    @subscriptions = Subscription.all
   end
 
   
   def new
     @subscription = Subscription.new
-
   end
 
   def create
@@ -28,6 +28,6 @@ class SubscriptionsController < ApplicationController
 
   private
     def subscription_params
-      params.require(:subscription).permit(:user_id, :plan_id, :stripe_subsciption_id)
+      params.require(:subscription).permit(:user_id, :plan_id)
     end
 end

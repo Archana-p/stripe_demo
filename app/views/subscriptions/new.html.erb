@@ -1,26 +1,43 @@
-<%= form_tag(subscriptions_path, :method => :post, :id=>"stripe-form") do %>
-  <!-- <div class="field">
+
+<%= form_for @subscription do |f| %>
+
+  <%= f.hidden_field :plan_id ,params['plan_id'] %>
+  <%= f.hidden_field :user_id ,params['user_id'] %>
+
+  <%#= f.hidden_field :stripe_card_token %>
+  
+  <div class="field">
     <%#= f.label :email %>
     <%#= f.text_field :email %>
+  </div>
+  <%# if @customer.stripe_card_token.present? %>
+    <!-- Credit card has been provided. -->
+  <%# else %>
+    <div class="credit-number">
+      <%= label_tag :card_number, "Credit Card Number" %>
+      <%= text_field_tag :card_number, nil, name: nil %>
+    </div>
+    <div class="credit-security">
+      <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+      <%= text_field_tag :card_code, nil, name: nil %>
+    </div>
+    <div class="field">
+      <%= label_tag :card_month, "Card Expiration" %>
+      <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+    </div>
+  <%# end %>
+  <!-- <div id="stripe_error">
+    <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser settings.</noscript>
   </div> -->
-  <div class="field">
-    <%= label_tag :card_number, "Credit Card Number" %>
-    <%= text_field_tag :card_number, nil, name: nil,:class=>'credit-number' %>
-  </div>
-  <div class="field">
-    <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-    <%= text_field_tag :card_code, nil, name: nil,:class=>'credit-security' %>
-  </div>
-  <div class="field">
-    <%= label_tag :card_month, "Card Expiration" %>
-    <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month",:class => "card-expiry-month"} %>
-    <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year",:class => "card-expiry-year"} %>
-  </div>
-  <div>
-    <%= submit_tag "Submit" %>
+  <div id="new_subscription">
+    <%= f.submit "Subscribe" %>
   </div>
 <% end %>
-<div id="stripe_error">
-  <noscript>JavaScript is not enabled and is required for this form. First enable it in your web browser   settings.
-  </noscript>
-</div>
+
+
+
+<%#= form_for @customer do |f| %>
+  <%#= f.hidden_field :plan_id %>
+ 
+<%#end%>
