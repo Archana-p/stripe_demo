@@ -1,3 +1,5 @@
+<%= current_user.email %>
+<%= link_to "Sign Out", destroy_user_session_path, :method => "Delete" %>
 <h2>Listing Plans </h2>
 <table border="1" cellpadding="1" cellspacing="0">
 	<tbody>
@@ -13,7 +15,7 @@
     <% @plans.each do |plan| %>
       <td><%= plan.stripe_plan_id %></td>
       <td><%= plan.name %></td>
-      <td><%= plan.amount  %></td>
+      <td><%= plan.amount %></td>
       <td><%= plan.trial_period_of_days %></td>
       <td><%= plan.interval %></td>
       <td><%= link_to "Subscribe", new_subscription_path(:plan_id => plan.id) %></td>

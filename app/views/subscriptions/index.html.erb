@@ -1,4 +1,23 @@
-<%= @subscriptions.each do |sub|%>
-	<%= sub.user_id%>
-	<%= sub.plan_id%>
-<%end%>
+<%= current_user.email %>
+<%= link_to "Sign Out", destroy_user_session_path, :method => "Delete" %>
+<br>
+<%= link_to "Plans", plans_path %>
+<h2>Listing Subscriptions </h2>
+<table border="1" cellpadding="1" cellspacing="0">
+	<tbody>
+  <tr>
+    <th>User Id</th>
+    <th>Plan Id</th> 
+    <th>Stripe Subscription Id</th>
+    <th>Email</th>
+   </tr>
+   <tr align="center">
+    <% @subscriptions.each do |subscription| %>
+      <td><%= subscription.user_id %></td>
+      <td><%= subscription.plan_id %></td>
+      <td><%= subscription.stripe_subsciption_id %></td>
+      <td><%= subscription.email %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
