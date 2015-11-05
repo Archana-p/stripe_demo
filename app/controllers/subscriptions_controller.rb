@@ -28,6 +28,6 @@ class SubscriptionsController < ApplicationController
 
   private
     def subscription_params
-      params.require(:subscription).permit(:user_id, :plan_id)
+      params.require(:subscription).permit(:user_id, :plan_id, :email)
     end
 end
